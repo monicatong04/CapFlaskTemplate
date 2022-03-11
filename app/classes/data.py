@@ -19,6 +19,7 @@ class User(UserMixin, Document):
     password_hash = StringField()
     fname = StringField()
     lname = StringField()
+    role = StringField()
     email = EmailField()
     image = FileField()
     
@@ -65,4 +66,3 @@ class Comment(Document):
     meta = {
         'ordering': ['-createdate']
     }
-role = StringField()
