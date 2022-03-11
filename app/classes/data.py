@@ -65,3 +65,4 @@ class Comment(Document):
     meta = {
         'ordering': ['-createdate']
     }
+role = StringField()

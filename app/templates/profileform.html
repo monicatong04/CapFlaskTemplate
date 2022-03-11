@@ -2,6 +2,15 @@
 
 {% block body %}
 
+<!--Include the role field-->
+<p>
+    {{ form.role.label }}<br>
+    {{ form.role() }}<br>
+    {% for error in form.role errors %}
+    <span style="color: red;">[{{ error }}]</span>
+    {% endfor %}
+</p>
+
     <!--List all errors in a group at the top-->
     {% for field in form.errors %}
         {% for error in form.errors[field] %}
