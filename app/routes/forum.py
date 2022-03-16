@@ -36,7 +36,7 @@ def postNew():
 
     # This is a conditional that evaluates to 'True' if the user submitted the form successfully 
     if form.validate_on_submit():
-
+        newPost = Post.objects.get(id=post.id)
         # This stores all the values that the user entered into the new post form. 
         # Post() is a method for creating a new post. 'newPost' is the variable where the object
         # that is the result of the Post() method is stored.  
@@ -49,6 +49,10 @@ def postNew():
             # This sets the modifydate to the current datetime.
             modifydate = dt.datetime.utcnow
         )
+        if form.image.data:
+            if newPost.image:
+                newPost.image.delete()
+            newPost.image.put(form.image.data, content_type = 'image/jpeg')
         # This is a metod that saves the data to the mongoDB database.
         newPost.save()
 
@@ -142,3 +146,6 @@ def commentDelete(commentID):
     deleteComment.delete()
     flash('The comments was deleted.')
     return redirect(url_for('post',postID=deleteComment.post.id)) 
+
+
+
