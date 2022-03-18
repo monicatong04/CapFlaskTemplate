@@ -36,10 +36,9 @@ def postNew():
 
     # This is a conditional that evaluates to 'True' if the user submitted the form successfully 
     if form.validate_on_submit():
-        newPost = Post.objects.get(id=post.id)
         # This stores all the values that the user entered into the new post form. 
         # Post() is a method for creating a new post. 'newPost' is the variable where the object
-        # that is the result of the Post() method is stored.  
+        # that is the result of the Post() method is stored. 
         newPost = Post(
             # the left side is the name of the field from the data table
             # the right side is the data the user entered which is held in the form object.
@@ -49,6 +48,7 @@ def postNew():
             # This sets the modifydate to the current datetime.
             modifydate = dt.datetime.utcnow
         )
+
         if form.image.data:
             if newPost.image:
                 newPost.image.delete()
