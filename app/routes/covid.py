@@ -1,10 +1,9 @@
-from app import app, login
+from app import app
 import mongoengine.errors
 from flask import render_template, flash, redirect, url_for
-from flask_login import current_user
+from flask_login import current_user, login_required
 from app.classes.data import Covid
 from app.classes.forms import CovidForm
-from flask_login import login_required
 import datetime as dt
 
 @app.route('/covid/new', methods=['GET', 'POST'])
