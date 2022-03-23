@@ -55,7 +55,7 @@ class ResetPasswordForm(FlaskForm):
 class ProfileForm(FlaskForm):
     fname = StringField('First Name', validators=[DataRequired()])
     lname = StringField('Last Name', validators=[DataRequired()]) 
-    role = SelectField('Role',choices=[("Teacher","Teacher"),("Student","Student")])
+    role = SelectField('Role',choices=[("Teacher","Teacher"),("Student","Student"),("Admin","Admin")])
     gender = SelectField('Gender',choices=[("Female","Female"),("Male","Male"),("Other","Other")])
     image = FileField("Image") 
     submit = SubmitField('Post')
@@ -69,3 +69,9 @@ class PostForm(FlaskForm):
 class CommentForm(FlaskForm):
     content = TextAreaField('Comment', validators=[DataRequired()])
     submit = SubmitField('Comment')
+
+class CovidForm(FlaskForm):
+    date = StringField('Dates', validators=[DataRequired()])
+    address = TextAreaField('Address', validators=[DataRequired()])
+    option = SelectField('Option',choices=[("Testing","Testing"),("Vaccination","Vaccination")])
+    submit = SubmitField('Post')
