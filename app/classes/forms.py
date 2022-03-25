@@ -71,7 +71,7 @@ class CommentForm(FlaskForm):
     submit = SubmitField('Comment')
 
 class CovidForm(FlaskForm):
-    date = StringField('Dates', validators=[DataRequired()])
+    date = StringField('Date', validators=[DataRequired()])
     address = TextAreaField('Address', validators=[DataRequired()])
     option = SelectField('Option',choices=[("Testing","Testing"),("Vaccination","Vaccination")])
-    submit = SubmitField('Post')
+    submit = SubmitField('Submit')

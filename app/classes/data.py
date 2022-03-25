@@ -72,7 +72,7 @@ class Comment(Document):
 
 class Covid(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
-    date = DateTimeField()
+    date = StringField()
     address = StringField()
     option = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
