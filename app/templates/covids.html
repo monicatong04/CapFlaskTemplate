@@ -4,36 +4,40 @@
 
 <div class="row">
     <div class="col-4">
-        <h1 class="display-1">All Locations</h1>
+        <h1 class="display-1">Covid-19 Locations</h1>
     </div>
     <div class="col">
         <a href="/covid/new" class="btn btn-primary btn-sm mt-5" role="button">New Post</a>
     </div>
 </div>
 
-{% if posts %}
-    {% for post in posts %}
+{% if covids %}
+    {% for covid in covids %}
         <div class="row border-bottom">
-            <div class="col-2">
-                {% if loop.index == 1 %}
-                <h3 class="display-5">Date</h3>
-                {% endif %}
-
-                <a href="/post/{{post.id}}">
-                    {{moment(post.createdate).calendar()}}
-                </a>
-            </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
                 <h3 class="display-5">User</h3>
                 {% endif %}
-                {{post.author.username}}
+                {{covid.author.username}}
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">Date(s)</h3>
+                {% endif %}
+                {{covid.date}}
+                </a>
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
-                    <h3 class="display-5">Subject</h3>
+                    <h3 class="display-5">Address</h3>
                 {% endif %}
-                {{post.subject}}
+                {{covid.address}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Type<h3>
+                {% endif %}
+                {{covid.option}}
             </div>
             </div>
         </div>
