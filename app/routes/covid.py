@@ -33,4 +33,37 @@ def covid(covidID):
 @login_required
 def covidList():
     covids = Covid.objects()
-    return render_template('covid.html',covids=covids)
+    return render_template('covids.html',covids=covids)
+
+@app.route('/covid/edit/<covidID>', methods=['GET', 'POST'])
+@login_required
+def covidEdit(covidID):
+    editCovid = Covid.objects.get(id=covidID)
+    if current_user != editCovid.author:
+        flash("You can't edit a post you don't own.")
+        return redirect(url_for('covid',covidID=covidID))
+    form = CovidForm()
+    if form.validate_on_submit():
+        editCovid.update(
+            date = form.date.data,
+            address = form.address.data,
+            modifydate = dt.datetime.utcnow
+        )
+        return redirect(url_for('covid',covidID=covidID))
+
+    form.date.data = editCovid.date
+    form.address.data = editCovid.address
+
+    return render_template('covidform.html',form=form)
+
+app.route('/covid/delete/<covidID>')
+@login_required
+def covidDelete(covidID):
+    deleteCovid = Covid.objects.get(id=covidID)
+    if current_user == deleteCovid.author:
+        deleteCovid.delete()
+        flash('The Post was deleted.')
+    else:
+        flash("You can't delete a post you don't own.")
+    covids = Covid.objects()  
+    return render_template('covids.html',covids=covids)
