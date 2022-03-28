@@ -10,24 +10,25 @@
 {% endif %}
 <br>
     {% if post.author == current_user %}
-        <a data-toggle="tooltip" data-placement="top" title="Delete Post" href="/post/delete/{{post.id}}">
+        <a data-toggle="tooltip" data-placement="top" title="Delete Post" href="/covid/delete/{{covid.id}}">
             <img width="40" class="bottom-image" src="/static/delete.png">
         </a>
-        <a data-toggle="tooltip" data-placement="top" title="Edit Post" href="/post/edit/{{post.id}}">
+        <a data-toggle="tooltip" data-placement="top" title="Edit Post" href="/covid/edit/{{covid.id}}">
             <img width="40" class="bottom-image" src="/static/edit.png">
         </a>
     {% endif %}
 
-    <h1 class="display-5">{{post.subject}}</h1>
+    <h1 class="display-5">{{covid.date}}</h1>
     <p class="fs-3 text-break">
         {% if post.author.image %}
             <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(post.author.image.read())}}">
         {% endif %}
-            {{covid.address}}
+            {{post.content}}
     </p>
 
+   
 {% else %}
-    <h1 class="display-5">No Post</h1>
+    <h1 class="display-5">No Info</h1>
 {% endif %}
 
 {% endblock %}
