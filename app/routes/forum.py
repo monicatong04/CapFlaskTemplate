@@ -99,11 +99,6 @@ def postNew():
             # This sets the modifydate to the current datetime.
             modifydate = dt.datetime.utcnow
         )
-
-        if form.image.data:
-            if newPost.image:
-                newPost.image.delete()
-            newPost.image.put(form.image.data, content_type = 'image/jpeg')
         # This is a metod that saves the data to the mongoDB database.
         newPost.save()
 

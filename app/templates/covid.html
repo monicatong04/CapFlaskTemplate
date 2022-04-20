@@ -5,11 +5,11 @@
 {% if covid %}
 
 {{moment(covid.createdate).calendar()}} by {{covid.author.username}} 
-{% if post.modifydate %}
-    modified {{moment(post.modifydate).calendar()}}
+{% if covid.modifydate %}
+    modified {{moment(covid.modifydate).calendar()}}
 {% endif %}
 <br>
-    {% if post.author == current_user %}
+    {% if covid.author == current_user %}
         <a data-toggle="tooltip" data-placement="top" title="Delete Post" href="/covid/delete/{{covid.id}}">
             <img width="40" class="bottom-image" src="/static/delete.png">
         </a>
@@ -19,12 +19,9 @@
     {% endif %}
 
     <h1 class="display-5">{{covid.date}}</h1>
-    <p class="fs-3 text-break">
-        {% if covid.author.image %}
-            <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(post.author.image.read())}}">
-        {% endif %}
-            {{covid.content}}
-    </p>
+
+    <h1 class="display-5">{{covid.address}}</h1>
+
 
    
 {% else %}

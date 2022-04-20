@@ -56,7 +56,7 @@ def covidEdit(covidID):
 
     return render_template('covidform.html',form=form)
 
-app.route('/covid/delete/<covidID>')
+@app.route('/covid/delete/<covidID>')
 @login_required
 def covidDelete(covidID):
     deleteCovid = Covid.objects.get(id=covidID)
