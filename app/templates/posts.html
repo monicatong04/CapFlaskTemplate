@@ -1,41 +1,62 @@
 {% extends 'base.html' %}
 
 {% block body %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Clean Blog - Start Bootstrap Theme</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{ url_for('static', filename='posts.css') }}" rel="stylesheet" />
+    </head>
 
-<div class="row">
-    <div class="col-4">
-        <h1 class="display-1">All Posts</h1>
-    </div>
-    <div class="col">
-        <a href="/post/new" class="btn btn-primary btn-sm mt-5" role="button">New Post</a>
-    </div>
-</div>
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('/static/newspapers.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>Announcements</h1>
+                            <span class="subheading">School news, safety updates, reminders</span>
+                            <br>
+                            <br>
+                            <a class="btn btn-light btn-xl" href="/post/new" role="button">New Post</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
 
+    <!-- Main Content-->
+    
 {% if posts %}
     {% for post in posts %}
-        <div class="row border-bottom">
-            <div class="col-2">
-                {% if loop.index == 1 %}
-                <h3 class="display-5">Date</h3>
-                {% endif %}
-
-                <a href="/post/{{post.id}}">
-                    {{moment(post.createdate).calendar()}}
-                </a>
-            </div>
-            <div class="col-2">
-                {% if loop.index == 1 %}
-                <h3 class="display-5">User</h3>
-                {% endif %}
-                {{post.author.username}}
-            </div>
-            <div class="col">
-                {% if loop.index == 1 %}
-                    <h3 class="display-5">Subject</h3>
-                {% endif %}
-                {{post.subject}}
-            </div>
-        </div>
+    
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="post.html">
+                        <h2 class="post-title">{{post.subject}}</h2>
+                    </a>
+                    <p class="post-meta">
+                        Posted by
+                        <a href="#!">{{post.author.username}}</a>
+                        on <a href="/post/{{post.id}}">
+                            {{moment(post.createdate).calendar()}}
+                        </a>
+                    </p>
+                    <!-- Divider-->
+                    <hr class="my-4" />
     {% endfor %}
 {% else %}
     <h1>No Posts</h1>
