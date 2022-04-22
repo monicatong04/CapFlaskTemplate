@@ -1,18 +1,45 @@
 {% extends 'base.html' %}
 
-{% block body %}
+{% block body %} 
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="row">
-    <div class="col-4">
-        <h1>Covid-19 Locations</h1>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Lumia Bootstrap Template - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+<link href="{{ url_for('static', filename='covids.css') }}" rel="stylesheet" />
+</head>
+
+<section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="container text-center text-md-left" data-aos="fade-up">
+      <h1>Covid-19 Resources</h1>
+      <h2>Vaccines, Testing, Booster Shots</h2>
+      <a href="/covid/new" class="btn-get-started scrollto">New Post</a>
     </div>
-    <div class="col">
-        <a href="/covid/new" class="btn btn-primary btn-sm mt-5" role="button">New Post</a>
-    </div>
-</div>
+</section>
 
 {% if covids %}
     {% for covid in covids %}
+
+    <div class="table100 ver5 m-b-110">
+        <div class="table100-head">
+            <table>
+                <thead>
+                    <tr class="row100 head">
+                        <th class="cell100 column1">Location</th>
+                        <th class="cell100 column2">User</th>
+                        <th class="cell100 column3">Hours</th>
+                        <th class="cell100 column4">Spots</th>
+                        <th class="cell100 column5">Type</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
         <div class="row border-bottom">
             <div class="col-2">
                 {% if loop.index == 1 %}
@@ -39,8 +66,23 @@
                 {% endif %}
                 {{covid.option}}
             </div>
-            </div>
-        </div>
+</div>
+
+        <div class="table100-body">
+            <table>
+                <tbody>
+                    <tr class="row100 body">
+                        <td class="cell100 column1">Like a butterfly</td>
+                        <td class="cell100 column2">Boxing</td>
+                        <td class="cell100 column3">9:00 AM - 11:00 AM</td>
+                        <td class="cell100 column4">Aaron Chapman</td>
+                        <td class="cell100 column5">10</td>
+                    </tr>
+                            </tbody>
+						</table>
+					</div>
+				</div>
+
     {% endfor %}
 {% else %}
     <h1>No Posts</h1>
