@@ -16,6 +16,8 @@ def covidNew():
             date = form.date.data,
             address = form.address.data,
             option = form.option.data,
+            link = form.link.data,
+            hours = form.hours.data,
             author = current_user.id,
             modifydate = dt.datetime.utcnow
         )
@@ -47,12 +49,17 @@ def covidEdit(covidID):
         editCovid.update(
             date = form.date.data,
             address = form.address.data,
+            link = form.link.data,
+            hours = form.hours.data,
             modifydate = dt.datetime.utcnow
         )
         return redirect(url_for('covid',covidID=covidID))
 
     form.date.data = editCovid.date
     form.address.data = editCovid.address
+    form.link.data = editCovid.link
+    form.hours.data = editCovid.hours
+
 
     return render_template('covidform.html',form=form)
 

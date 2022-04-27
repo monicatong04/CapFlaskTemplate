@@ -75,6 +75,8 @@ class Covid(Document):
     date = StringField()
     address = StringField()
     option = StringField()
+    hours = StringField()
+    link = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
 

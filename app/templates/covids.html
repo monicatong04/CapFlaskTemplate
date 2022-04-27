@@ -26,64 +26,45 @@
 {% if covids %}
     {% for covid in covids %}
 
-    <div class="table100 ver5 m-b-110">
-        <div class="table100-head">
-            <table>
-                <thead>
-                    <tr class="row100 head">
-                        <th class="cell100 column1">Location</th>
-                        <th class="cell100 column2">User</th>
-                        <th class="cell100 column3">Hours</th>
-                        <th class="cell100 column4">Spots</th>
-                        <th class="cell100 column5">Type</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
+<table class = "table">
+    <tr>
         <div class="row border-bottom">
-            <div class="col-2">
+            <div class="col">
                 {% if loop.index == 1 %}
-                <h3 class="display-5">User</h3>
+                <h5 class="display-5">User</h3>
                 {% endif %}
                 {{covid.author.username}}
             </div>
-            <div class="col-2">
+            <div class="col">
                 {% if loop.index == 1 %}
-                <h3 class="display-5">Date(s)</h3>
+                <h5 class="display-5">Date(s)</h3>
                 {% endif %}
                 {{covid.date}}
-                </a>
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
-                    <h3 class="display-5">Address</h3>
+                <h5 class="display-5">Hours<h3>
+                {% endif %}
+                {{covid.hours}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                <h5 class="display-5">Address</h3>
                 {% endif %}
                 {{covid.address}}
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
-                    <h3 class="display-5">Type<h3>
+                <h5 class="display-5">Type<h3>
                 {% endif %}
                 {{covid.option}}
             </div>
 </div>
-
-        <div class="table100-body">
-            <table>
-                <tbody>
-                    <tr class="row100 body">
-                        <td class="cell100 column1">Like a butterfly</td>
-                        <td class="cell100 column2">Boxing</td>
-                        <td class="cell100 column3">9:00 AM - 11:00 AM</td>
-                        <td class="cell100 column4">Aaron Chapman</td>
-                        <td class="cell100 column5">10</td>
-                    </tr>
-                            </tbody>
-						</table>
-					</div>
-				</div>
-
+</tr>
+</table>
     {% endfor %}
+
+    
 {% else %}
     <h1>No Posts</h1>
 {% endif %}

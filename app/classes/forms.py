@@ -72,6 +72,8 @@ class CommentForm(FlaskForm):
 
 class CovidForm(FlaskForm):
     date = StringField('Date', validators=[DataRequired()])
-    address = TextAreaField('Address', validators=[DataRequired()])
+    hours = StringField('Hours', validators=[DataRequired()])
+    address = StringField('Address', validators=[DataRequired()])
     option = SelectField('Option',choices=[("Testing","Testing"),("Vaccination","Vaccination")])
+    link = StringField('If not walk-in, link appointment page', validators=[DataRequired()])
     submit = SubmitField('Submit')
