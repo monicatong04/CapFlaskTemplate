@@ -39,7 +39,9 @@
                 {% if loop.index == 1 %}
                 <h5 class="display-5">Date(s)</h3>
                 {% endif %}
+                <a href="/covid/{{covid.id}}">
                 {{covid.date}}
+                </a>
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
@@ -58,7 +60,13 @@
                 <h5 class="display-5">Type<h3>
                 {% endif %}
                 {{covid.option}}
-            </div>
+                </div>
+                <div class="col">
+                    {% if loop.index == 1 %}
+                    <h5 class="display-5">Apply</h3>
+                    {% endif %}
+                    <button type="button"><a href="application.html">Apply</a></button>
+                </div>
 </div>
 </tr>
 </table>
