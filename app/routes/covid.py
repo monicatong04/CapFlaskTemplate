@@ -12,17 +12,18 @@ import datetime as dt
 def covidNew():
     form = CovidForm()
     if form.validate_on_submit():
+        print("validated,saving")
         newCovid = Covid(
             date = form.date.data,
             address = form.address.data,
             option = form.option.data,
-            link = form.link.data,
             hours = form.hours.data,
             author = current_user.id,
             modifydate = dt.datetime.utcnow
         )
         newCovid.save()
         return redirect(url_for('covid',covidID=newCovid.id))
+    print("invalid")
     return render_template('covidform.html',form=form)
 
 @app.route('/covid/<covidID>')
@@ -49,17 +50,16 @@ def covidEdit(covidID):
         editCovid.update(
             date = form.date.data,
             address = form.address.data,
-            link = form.link.data,
             hours = form.hours.data,
+            option = form.option.data,
             modifydate = dt.datetime.utcnow
         )
         return redirect(url_for('covid',covidID=covidID))
 
     form.date.data = editCovid.date
     form.address.data = editCovid.address
-    form.link.data = editCovid.link
     form.hours.data = editCovid.hours
-
+    form.option.data = editCovid.option
 
     return render_template('covidform.html',form=form)
 

@@ -26,8 +26,6 @@
 {% if covids %}
     {% for covid in covids %}
 
-<table class = "table">
-    <tr>
         <div class="row border-bottom">
             <div class="col">
                 {% if loop.index == 1 %}
@@ -65,13 +63,10 @@
                     {% if loop.index == 1 %}
                     <h5 class="display-5">Apply</h3>
                     {% endif %}
-                    <button type="button"><a href="application.html">Apply</a></button>
+                    <button type="button">Apply</a></button>
                 </div>
 </div>
-</tr>
-</table>
     {% endfor %}
-
     
 {% else %}
     <h1>No Posts</h1>
